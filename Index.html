@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piola Burguer Cafe | Café y Hamburguesas en Málaga — Clásico y Acogedor</title>
+    <meta name="description" content="Piola Burguer Cafe en Málaga: desayunos, hamburguesas y cenas con sabor auténtico. Ambiente chill inspirado en el lunfardo “piola”. Reserva o pide online.">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Piola Burguer Cafe">
+    <link rel="canonical" href="https://{{TU_DOMINIO}}/">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://{{TU_DOMINIO}}/">
+    <meta property="og:title" content="Piola Burguer Cafe | Café y Hamburguesas en Málaga — Clásico y Acogedor">
+    <meta property="og:description" content="Piola Burguer Cafe en Málaga: desayunos, hamburguesas y cenas con sabor auténtico. Ambiente chill inspirado en el lunfardo “piola”. Reserva o pide online.">
+    <meta property="og:image" content="https://placehold.co/1200x630/7D5A4A/fff?text=Piola+Burguer+Cafe">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://{{TU_DOMINIO}}/">
+    <meta property="twitter:title" content="Piola Burguer Cafe | Café y Hamburguesas en Málaga — Clásico y Acogedor">
+    <meta property="twitter:description" content="Piola Burguer Cafe en Málaga: desayunos, hamburguesas y cenas con sabor auténtico. Ambiente chill inspirado en el lunfardo “piola”. Reserva o pide online.">
+    <meta property="twitter:image" content="https://placehold.co/1200x630/7D5A4A/fff?text=Piola+Burguer+Cafe">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- JSON-LD (Schema.org) para LocalBusiness, Restaurant y Menu -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "Piola Burguer Cafe",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Calle Lope de Rueda, 148",
+        "addressLocality": "Málaga",
+        "addressRegion": "Andalucía",
+        "postalCode": "29190",
+        "addressCountry": "ES"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 36.75691,
+        "longitude": -4.50242
+      },
+      "url": "https://{{TU_DOMINIO}}",
+      "telephone": "+34 951 46 89 72",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Lunes",
+            "Martes",
+            "Miércoles",
+            "Jueves",
+            "Viernes"
+          ],
+          "opens": "08:00",
+          "closes": "23:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Sábado",
+            "Domingo"
+          ],
+          "opens": "09:00",
+          "closes": "01:00"
+        }
+      ],
+      "acceptsReservations": "True",
+      "hasMenu": {
+        "@type": "Menu",
+        "name": "Menú Piola Burguer Cafe",
+        "description": "Menú completo de desayunos, hamburguesas, tapas y más.",
+        "hasMenuSection": [
+          {
+            "@type": "MenuSection",
+            "name": "Desayunos",
+            "hasMenuItem": [
+              { "@type": "MenuItem", "name": "Tosta de Salmón", "description": "Salmón, philadelphia y chía", "offers": { "@type": "Offer", "price": "3.80", "priceCurrency": "EUR" } },
+              { "@type": "MenuItem", "name": "Tosta de Aguacate", "description": "Aguacate, philadelphia y chía", "offers": { "@type": "Offer", "price": "3.60", "priceCurrency": "EUR" } },
+              { "@type": "MenuItem", "name": "Croissant Mixto", "description": "Jamón cocido y queso", "offers": { "@type": "Offer", "price": "3.00", "priceCurrency": "EUR" } }
+            ]
+          },
+          {
+            "@type": "MenuSection",
+            "name": "Hamburguesas",
+            "hasMenuItem": [
+              { "@type": "MenuItem", "name": "Hamburguesa de Buey", "description": "200grs de buey, queso cheddar, lechuga, tomate y cebolla", "offers": { "@type": "Offer", "price": "7.50", "priceCurrency": "EUR" } },
+              { "@type": "MenuItem", "name": "Doble Crush", "description": "Doble burguer ternera, queso cheddar, bacon y huevo", "offers": { "@type": "Offer", "price": "7.80", "priceCurrency": "EUR" } }
+            ]
+          }
+        ]
+      }
+    }
+    </script>
+    <style>
+        /* Base styles */
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, .font-handwritten { font-family: 'Dancing Script', cursive; }
+        .dropdown-menu { display: none; }
+        .dropdown-menu.open { display: block; }
+
+        /* Hamburger icon animation */
+        .hamburger-icon { width: 24px; height: 24px; position: relative; cursor: pointer; }
+        .hamburger-icon span { display: block; height: 2px; background-color: #f3f2ef; margin: 4px 0; transition: transform 0.3s ease; }
+        .hamburger-icon.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+        .hamburger-icon.open span:nth-child(2) { transform: scale(0); }
+        .hamburger-icon.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+        /* Collapsible content transition */
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+        .collapsible-content.open {
+            max-height: 2000px; /* Large value for smooth transition */
+        }
+        
+        /* Collapsible icon rotation */
+        .collapsible-icon {
+            transition: transform 0.5s ease-in-out;
+        }
+        .collapsible-icon.open {
+            transform: rotate(180deg);
+        }
+
+        /* Accordion style for reservations */
+        details {
+            transition: all 0.3s ease-in-out;
+            border: 1px solid #e5e7eb;
+            border-radius: 1rem;
+            overflow: hidden;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        details > summary {
+            list-style: none;
+            cursor: pointer;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #374151;
+            transition: background-color 0.3s ease-in-out;
+        }
+        details[open] > summary {
+            background-color: #f3f4f6;
+            color: #1f2937;
+        }
+        details > summary::after {
+            content: '+';
+            font-size: 1.5rem;
+            transition: transform 0.3s ease-in-out;
+        }
+        details[open] > summary::after {
+            content: '−';
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+
+<body class="bg-[#42292A] text-stone-900">
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#42292A] text-white shadow-lg">
+        <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <a href="#" class="text-3xl font-bold tracking-wide font-handwritten text-orange-400">Piola Burguer Cafe</a>
+            <!-- Desktop Menu -->
+            <ul class="hidden lg:flex items-center space-x-6">
+                <li class="relative group">
+                    <a href="#menu" class="p-2 flex items-center hover:text-orange-400 transition-colors">Menú <svg class="w-4 h-4 ml-1 transform group-hover:rotate-180 transition-transform" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></a>
+                    <div class="absolute hidden group-hover:block bg-[#5a3a3b] bg-opacity-90 rounded-lg p-2 mt-2 shadow-md">
+                        <a href="#desayunos-toggle" class="block p-2 text-white hover:bg-orange-800 rounded-lg nav-link-collapsible">Desayunos</a>
+                        <a href="#almuerzo-cena-toggle" class="block p-2 text-white hover:bg-orange-800 rounded-lg nav-link-collapsible">Almuerzo / Cena</a>
+                    </div>
+                </li>
+                <li class="relative group">
+                    <a href="#quienes-somos-toggle" class="p-2 flex items-center hover:text-orange-400 transition-colors">Quiénes somos <svg class="w-4 h-4 ml-1 transform group-hover:rotate-180 transition-transform" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></a>
+                    <div class="absolute hidden group-hover:block bg-[#5a3a3b] bg-opacity-90 rounded-lg p-2 mt-2 shadow-md">
+                        <a href="#quienes-somos-toggle" class="block p-2 text-white hover:bg-orange-800 rounded-lg nav-link-collapsible">Quiénes somos</a>
+                        <a href="#historia" class="block p-2 text-white hover:bg-orange-800 rounded-lg">Historia</a>
+                    </div>
+                </li>
+                <li><a href="#promociones" class="p-2 hover:text-orange-400 transition-colors">Promociones</a></li>
+                <li><a href="#testimonios-toggle" class="p-2 hover:text-orange-400 transition-colors nav-link-collapsible">Reseñas</a></li>
+                <li><a href="#reservas" class="p-2 hover:text-orange-400 transition-colors">Reservas</a></li>
+                <li><a href="#contacto" class="p-2 hover:text-orange-400 transition-colors">Contacto</a></li>
+            </ul>
+            <!-- Mobile Hamburger -->
+            <button id="mobile-menu-button" class="lg:hidden flex items-center p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400" aria-controls="mobile-menu" aria-expanded="false">
+                <span class="hamburger-icon" id="hamburger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </button>
+        </nav>
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-[#5a3a3b] bg-opacity-90 transition-all duration-300 ease-in-out">
+            <ul class="flex flex-col p-4 space-y-2">
+                <li><a href="#desayunos-toggle" class="block p-2 text-white hover:bg-orange-800 rounded-lg nav-link-collapsible">Desayunos</a></li>
+                <li><a href="#almuerzo-cena-toggle" class="block p-2 text-white hover:bg-orange-800 rounded-lg nav-link-collapsible">Almuerzo / Cena</a></li>
+                <li><a href="#quienes-somos-toggle" class="block p-2 text-white hover:bg-orange-800 rounded-lg nav-link-collapsible">Quiénes somos</a></li>
+                <li><a href="#historia" class="block p-2 text-white hover:bg-orange-800 rounded-lg">Historia</a></li>
+                <li><a href="#promociones" class="block p-2 text-white hover:bg-orange-800 rounded-lg">Promociones</a></li>
+                <li><a href="#testimonios-toggle" class="block p-2 text-white hover:bg-orange-800 rounded-lg nav-link-collapsible">Reseñas</a></li>
+                <li><a href="#reservas" class="block p-2 text-white hover:bg-orange-800 rounded-lg">Reservas</a></li>
+                <li><a href="https://wa.me/34644123456" class="block p-2 text-white hover:bg-orange-800 rounded-lg" target="_blank">WhatsApp</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="text-stone-900">
+        <!-- Hero Section -->
+        <section class="min-h-screen flex flex-col items-center justify-center text-center p-4">
+            <div class="bg-[#e4dccf] p-8 rounded-2xl shadow-xl">
+                <div class="mb-4 text-8xl md:text-9xl drop-shadow-lg animate-pulse-slow">
+                    ☕
+                </div>
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-handwritten font-extrabold tracking-tight leading-tight mb-4 drop-shadow-lg text-orange-800">Piola Burguer Cafe</h1>
+                <p class="text-xl sm:text-2xl font-light mb-8 drop-shadow-md text-stone-700">Ambiente chill, sabores que enamoran. ¡La escapada perfecta!</p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center">
+                    <a href="#menu" class="bg-amber-200 text-stone-800 font-bold py-3 px-6 rounded-full shadow-lg hover:bg-amber-300 transition-colors duration-300">Ver Menú</a>
+                    <a href="#reservas" class="bg-orange-800 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-orange-900 transition-colors duration-300">Reservar mesa</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Section -->
+        <section id="menu" class="container mx-auto px-4 py-16 bg-[#e4dccf] rounded-2xl">
+            <h2 class="text-5xl font-handwritten text-center mb-12 text-orange-800">Nuestro Menú</h2>
+            
+            <!-- Dynamic menu items will be injected here -->
+            <div id="desayunos" class="mb-12">
+                <!-- Collapsible Header for Desayunos -->
+                <button id="desayunos-toggle" class="w-full flex justify-between items-center text-3xl font-handwritten text-center mb-6 text-orange-800 cursor-pointer focus:outline-none">
+                    <span>Desayunos</span>
+                    <svg id="desayunos-icon" class="w-6 h-6 collapsible-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                </button>
+                <div id="desayunos-content" class="collapsible-content">
+                    <div id="tostas" itemscope itemtype="https://schema.org/MenuSection">
+                        <h4 class="text-3xl font-handwritten font-bold mb-4 text-stone-700" itemprop="name">Tostas</h4>
+                        <div id="tostas-items" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+                    </div>
+                    <div id="croissant" itemscope itemtype="https://schema.org/MenuSection">
+                        <h4 class="text-3xl font-handwritten font-bold mb-4 text-stone-700" itemprop="name">Croissant</h4>
+                        <div id="croissant-items" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+                    </div>
+                    <div id="pitufos" itemscope itemtype="https://schema.org/MenuSection">
+                        <h4 class="text-3xl font-handwritten font-bold mb-4 text-stone-700" itemprop="name">Pitufos / Vienas</h4>
+                        <div id="pitufos-items" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="border-t-2 border-stone-300 my-12">
+
+            <div id="almuerzo-cena" class="mb-12">
+                <!-- Collapsible Header for Almuerzo / Cena -->
+                <button id="almuerzo-cena-toggle" class="w-full flex justify-between items-center text-3xl font-handwritten text-center mb-6 text-orange-800 cursor-pointer focus:outline-none">
+                    <span>Almuerzo / Cena</span>
+                    <svg id="almuerzo-cena-icon" class="w-6 h-6 collapsible-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                </button>
+                <div id="almuerzo-cena-content" class="collapsible-content">
+                    <div id="tapas" itemscope itemtype="https://schema.org/MenuSection">
+                        <h4 class="text-3xl font-handwritten font-bold mb-4 text-stone-700" itemprop="name">Tapas</h4>
+                        <div id="tapas-items" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+                    </div>
+                    <div id="entrantes" itemscope itemtype="https://schema.org/MenuSection">
+                        <h4 class="text-3xl font-handwritten font-bold mb-4 text-stone-700" itemprop="name">Entrantes</h4>
+                        <div id="entrantes-items" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+                    </div>
+                    <div id="ensaladas" itemscope itemtype="https://schema.org/MenuSection">
+                        <h4 class="text-3xl font-handwritten font-bold mb-4 text-stone-700" itemprop="name">Ensaladas</h4>
+                        <div id="ensaladas-items" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+                    </div>
+                    <div id="burguers" itemscope itemtype="https://schema.org/MenuSection">
+                        <h4 class="text-3xl font-handwritten font-bold mb-4 text-stone-700" itemprop="name">Burguers</h4>
+                        <div id="burguers-items" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+                    </div>
+                    <div id="montados" itemscope itemtype="https://schema.org/MenuSection">
+                        <h4 class="text-3xl font-handwritten font-bold mb-4 text-stone-700" itemprop="name">Montados</h4>
+                        <div id="montados-items" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+                    </div>
+                    <div id="camperos" itemscope itemtype="https://schema.org/MenuSection">
+                        <h4 class="text-3xl font-handwritten font-bold mb-4 text-stone-700" itemprop="name">Camperos</h4>
+                        <div id="camperos-items" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiénes somos / Historia Section -->
+        <section id="quienes-somos" class="bg-[#382223] px-4 py-16 text-white">
+            <button id="quienes-somos-toggle" class="w-full flex justify-between items-center text-5xl font-handwritten font-bold text-orange-400 cursor-pointer focus:outline-none mb-6">
+                <span>Quiénes somos</span>
+                <svg id="quienes-somos-icon" class="w-8 h-8 collapsible-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+            </button>
+            <div id="quienes-somos-content" class="collapsible-content">
+                <div class="container mx-auto text-center">
+                    <p class="text-stone-300 leading-relaxed mb-8">
+                        Somos Piola Burguer Cafe, un rincón con alma en el corazón de Málaga. Nuestro espacio es un refugio para el buen rollo, donde el café es de especialidad, las hamburguesas son jugosas y el ambiente es siempre "piola". ¿Qué significa eso? ¡Te lo contamos!
+                    </p>
+                    <h3 id="historia" class="text-4xl font-handwritten font-semibold mb-4 text-orange-400">Historia</h3>
+                    <p class="text-stone-300 leading-relaxed">
+                        "Piola" es una palabra del lunfardo, un argot de Argentina, que significa algo así como "relajado", "genial" o "todo bien". Y esa es nuestra filosofía. Queremos que cada visita a Piola sea una pausa de la rutina, un momento de desconexión. Queremos que te sientas como en casa, disfrutando de lo simple y lo bueno de la vida. Desde el aroma de nuestro café por la mañana hasta la última mordida de nuestras hamburguesas al atardcer, todo en Piola está pensado para que te sientas "piola".
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonios Section -->
+        <section id="testimonios" class="bg-[#e4dccf] px-4 py-16 text-stone-900">
+            <button id="testimonios-toggle" class="w-full flex justify-between items-center text-5xl font-handwritten font-bold text-orange-800 cursor-pointer focus:outline-none mb-6">
+                <span>Reseñas de nuestros clientes</span>
+                <svg id="testimonios-icon" class="w-8 h-8 collapsible-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+            </button>
+            <div id="testimonios-content" class="collapsible-content">
+                <div class="container mx-auto">
+                    <!-- Formulario para dejar una reseña -->
+                    <div class="bg-white p-8 rounded-2xl shadow-md border border-stone-200 mb-12">
+                        <h3 class="text-3xl font-handwritten font-semibold mb-4 text-orange-800">Déjanos tu opinión</h3>
+                        <form id="review-form">
+                            <div class="mb-4">
+                                <label for="review-text" class="block text-stone-700 font-medium">Tu reseña</label>
+                                <textarea id="review-text" name="review-text" rows="4" class="mt-1 block w-full rounded-md border-stone-300 shadow-sm p-2 focus:ring-orange-800 focus:border-orange-800 bg-stone-100 text-stone-900" placeholder="Escribe tu reseña aquí..." required></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-orange-800 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-orange-900 transition-colors duration-300">
+                                Enviar Reseña
+                            </button>
+                        </form>
+                        <!-- Mensaje de éxito y error -->
+                        <div id="review-message" class="hidden mt-4 p-4 rounded-md text-center font-medium"></div>
+                        <!-- Spinner de carga -->
+                        <div id="loading-spinner" class="hidden mt-4 text-center">
+                            <div class="animate-spin inline-block w-8 h-8 border-4 rounded-full border-orange-800 border-t-transparent"></div>
+                        </div>
+                    </div>
+                    <!-- Contenedor para mostrar las reseñas -->
+                    <div id="reviews-container" class="space-y-8">
+                        <!-- Las reseñas se cargarán aquí dinámicamente -->
+                        <p class="text-center text-stone-500">Cargando reseñas...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reservas & Contacto Section (Acordeón) -->
+        <section id="reservas" class="container mx-auto px-4 py-16">
+            <div class="rounded-xl overflow-hidden">
+                <details class="bg-stone-100 border border-stone-200">
+                    <summary class="flex justify-between items-center p-6 text-3xl font-handwritten font-bold text-orange-800 cursor-pointer focus:outline-none">
+                        Reservas y Contacto
+                    </summary>
+                    <div class="p-6 bg-white border-t border-stone-200 grid lg:grid-cols-2 gap-12 items-center">
+                        <!-- Formulario de Reservas -->
+                        <div class="bg-stone-100 p-8 rounded-2xl shadow-md border border-stone-200">
+                            <h3 class="text-3xl font-handwritten font-semibold mb-4 text-orange-800">Haz tu reserva</h3>
+                            <form id="reservas-form">
+                                <div class="mb-4">
+                                    <label for="nombre" class="block text-stone-700 font-medium">Nombre</label>
+                                    <input type="text" id="nombre" name="nombre" class="mt-1 block w-full rounded-md border-stone-300 shadow-sm p-2 focus:ring-orange-800 focus:border-orange-800 bg-white text-stone-900" required>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="email" class="block text-stone-700 font-medium">Email</label>
+                                    <input type="email" id="email" name="email" class="mt-1 block w-full rounded-md border-stone-300 shadow-sm p-2 focus:ring-orange-800 focus:border-orange-800 bg-white text-stone-900" required>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="telefono" class="block text-stone-700 font-medium">Teléfono</label>
+                                    <input type="tel" id="telefono" name="telefono" class="mt-1 block w-full rounded-md border-stone-300 shadow-sm p-2 focus:ring-orange-800 focus:border-orange-800 bg-white text-stone-900" required>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="fecha" class="block text-stone-700 font-medium">Fecha</label>
+                                    <input type="date" id="fecha" name="fecha" class="mt-1 block w-full rounded-md border-stone-300 shadow-sm p-2 focus:ring-orange-800 focus:border-orange-800 bg-white text-stone-900" required>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="personas" class="block text-stone-700 font-medium">Número de personas</label>
+                                    <input type="number" id="personas" name="personas" min="1" max="10" class="mt-1 block w-full rounded-md border-stone-300 shadow-sm p-2 focus:ring-orange-800 focus:border-orange-800 bg-white text-stone-900" required>
+                                </div>
+                                <button type="submit" class="w-full bg-orange-800 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-orange-900 transition-colors duration-300">
+                                    Enviar Reserva
+                                </button>
+                            </form>
+                            <div id="reservation-message" class="hidden mt-4 p-4 rounded-md text-center font-medium"></div>
+                            <div id="reservation-spinner" class="hidden mt-4 text-center">
+                                <div class="animate-spin inline-block w-8 h-8 border-4 rounded-full border-orange-800 border-t-transparent"></div>
+                            </div>
+                        </div>
+                        <!-- Información de Contacto y Mapa -->
+                        <div id="contacto" class="flex flex-col space-y-8">
+                            <div>
+                                <h3 class="text-3xl font-handwritten font-semibold mb-4 text-orange-800">Nuestros Locales</h3>
+                                <div class="space-y-4">
+                                    <!-- Local 1 -->
+                                    <div class="bg-stone-100 p-4 rounded-xl shadow-sm border border-stone-200">
+                                        <p class="font-bold text-stone-900">Local 1</p>
+                                        <p class="text-stone-700"><strong>Dirección:</strong> Calle Lope de Rueda, 148, 29190 Málaga, España</p>
+                                        <p class="text-stone-700"><strong>Teléfono:</strong> +34 951 46 89 72</p>
+                                    </div>
+                                    <!-- Local 2 -->
+                                    <div class="bg-stone-100 p-4 rounded-xl shadow-sm border border-stone-200">
+                                        <p class="font-bold text-stone-900">Local 2</p>
+                                        <p class="text-stone-700"><strong>Dirección:</strong> Calle Villafuerte, 42, 29010 Málaga, España</p>
+                                        <p class="text-stone-700"><strong>Teléfono:</strong> +34 951 46 89 72</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-3xl font-handwritten font-semibold mb-4 text-orange-800">Encuéntranos</h3>
+                                <!-- Placeholder de Google Maps para el Local 1 -->
+                                <div class="bg-stone-100 rounded-xl overflow-hidden shadow-md mb-4" style="height: 300px;">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3197.359281726593!2d-4.504221723706059!3d36.75691079366408!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd72f2323f46f5b9%3A0x6790930353c8965c!2sCalle%20Lope%20de%20Rueda%2C%20148%2C%2029190%20M%C3%A1laga%2C%20Espa%C3%B1a!5e0!3m2!1ses!2ses!4v1717617415170!5m2!1ses!2ses" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#382223] text-stone-200 px-4 py-8">
+        <div class="container mx-auto text-center">
+            <div class="mb-4">
+                <p class="text-2xl font-handwritten font-bold">Piola Burguer Cafe</p>
+                <p class="text-sm text-stone-300">Café, hamburguesas y buena onda en Málaga</p>
+            </div>
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="#menu" class="hover:text-orange-400 transition-colors">Menú</a>
+                <a href="#quienes-somos" class="hover:text-orange-400 transition-colors">Quiénes somos</a>
+                <a href="#testimonios" class="hover:text-orange-400 transition-colors">Reseñas</a>
+                <a href="#reservas" class="hover:text-orange-400 transition-colors">Reservas</a>
+                <a href="#contacto" class="hover:text-orange-400 transition-colors">Contacto</a>
+            </div>
+            <div class="flex justify-center space-x-4 mb-4">
+                <!-- Icono de Instagram -->
+                <a href="https://www.instagram.com/piolaburguercafe?igsh=NXlsdmo0amtvcTFj" target="_blank" class="text-stone-300 hover:text-orange-400 transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.013 4.85.071 1.17.065 1.744.248 2.228.423.483.175.898.418 1.348.868.45.45.693.865.868 1.348.175.484.358 1.058.423 2.228-.058 1.266-.071 1.646-.071 4.85s-.013 3.584-.071 4.85c-.065 1.17-.248 1.744-.423 2.228-.175.483-.418.898-.868 1.348-.45.45-.693.865-.868 1.348-.175.484-.358 1.058-.423 2.228-.058 1.266-.071 1.646-.071 4.85zM12 9.271c-1.503 0-2.729 1.226-2.729 2.729s1.226 2.729 2.729 2.729 2.729-1.226 2.729-2.729-1.226-2.729-2.729-2.729zM12 14.729c-1.35 0-2.458-1.108-2.458-2.458s1.108-2.458 2.458-2.458 2.458 1.108 2.458 2.458-1.108 2.458-2.458 2.458zM17.82 5.093c-.45-.45-.9-.693-1.408-.868-.508-.175-1.106-.296-1.76-.36-.65-.065-1.38-.078-2.4-.078s-1.75.013-2.4.078c-.65.064-1.252.185-1.76.36-.175.483-.418.958-.868 1.408-.45.45-.693.9-.868 1.408-.175.484-.358 1.058-.423 2.228-.058-1.266-.071-1.646-.071 4.85zM17.82 5.093z"/></svg>
+                </a>
+                <!-- Icono de TikTok -->
+                <a href="https://www.tiktok.com/@piolaburguercafe" target="_blank" class="text-stone-300 hover:text-orange-400 transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525 15.65c.18-.02.35-.04.53-.05.41-.02.82-.02 1.22-.02h.17c.5 0 .93.18 1.29.54.43.43.68 1.04.68 1.7h-2.14v-.25c0-.43.14-.7.42-.9.27-.2.62-.28 1.05-.22zm-3.8-1.65c.34-.04.68-.07 1.03-.08.4-.02.8-.02 1.2.02.43.05.7.27.9.54.21.28.31.63.31 1.05v.39h-3.44v-.39c0-.42.1-.77.3-1.05.2-.27.47-.49.9-.54zm-2.14-1.7c.07-.15.17-.3.27-.45.1-.15.22-.3.34-.45.24-.3.48-.59.74-.89.27-.29.57-.55.89-.79.35-.26.7-.48 1.07-.65.37-.18.78-.26 1.23-.26h.22c.42 0 .81.08 1.18.23.36.16.68.37.95.63.29.27.53.56.74.88.2.3.36.62.49.95.12.33.22.68.29 1.03.07.36.1.72.1 1.08v.25h-6.2v-.25c0-.36.03-.72.1-1.08.07-.35.17-.7.3-1.03.12-.33.28-.65.49-.95.21-.32.45-.61.74-.88.28-.26.6-.47.95-.63.37-.15.76-.23 1.18-.23h.22c.45 0 .86.08 1.23.26.37.17.72.43.95.69.32.24.62.51.89.8.26.3.5.6.74.9.12.15.24.3.34.45.1-.15.2-.3.27-.45.13.25.24.5.34.76.1-.26.17-.52.22-.78.05-.26.08-.52.08-.78z" /></svg>
+                </a>
+            </div>
+            <p class="text-sm text-stone-400 mt-4">&copy; 2024 Piola Burguer Cafe. Todos los derechos reservados.</p>
+            <p id="user-id-display" class="text-xs text-stone-400 mt-2 hidden"></p>
+        </div>
+    </footer>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, onSnapshot, query, Timestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        setLogLevel('debug');
+
+        // Global variables provided by the Canvas environment
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+        
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+        
+        let userId = null;
+        let authReady = false;
+
+        // Listen for auth state changes to get the user ID
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                userId = user.uid;
+            } else {
+                userId = crypto.randomUUID(); // Use a temporary ID if no user is signed in
+            }
+            authReady = true;
+            document.getElementById('user-id-display').textContent = `Tu ID de usuario: ${userId}`;
+            document.getElementById('user-id-display').classList.remove('hidden');
+
+            // Once authenticated, load reviews in real-time
+            await loadReviews();
+        });
+        
+        // Sign in anonymously or with custom token on page load
+        const signIn = async () => {
+            try {
+                if (initialAuthToken) {
+                    await signInWithCustomToken(auth, initialAuthToken);
+                } else {
+                    await signInAnonymously(auth);
+                }
+            } catch (error) {
+                console.error("Error signing in:", error);
+            }
+        };
+        
+        // --- Dynamic Menu & Collapsible Sections ---
+        let menuItems = [
+            // Tostas
+            { name: "Salmón", description: "Salmón, philadelphia y chía", price: 3.80, category: "tostas" },
+            { name: "Salmón Plus", description: "Salmón, aguacate, philadelphia y chía", price: 4.80, category: "tostas" },
+            { name: "Aguacate", description: "Aguacate, philadelphia y chía", price: 3.60, category: "tostas" },
+            { name: "Aguacate Plus", description: "Aguacate, pavo, philadelphia y chía", price: 3.90, category: "tostas" },
+            { name: "Francesa", description: "Francesa, pavo, queso blanco, aceite, tomate y chía", price: 4.30, category: "tostas" },
+            { name: "Piola", description: "Queso blanco, aguacate, aceite, tomate y chía", price: 4.10, category: "tostas" },
+            { name: "Capri", description: "Queso de cabra, cebolla caramelizada, nueces y miel", price: 4.70, category: "tostas" },
+            { name: "Saludable", description: "Aguacate, pavo, philadelphia y chía", price: 3.70, category: "tostas" },
+            // Croissant
+            { name: "Mantequilla mermelada", description: "", price: 2.70, category: "croissant" },
+            { name: "Mixto", description: "Jamón cocido y queso", price: 3.00, category: "croissant" },
+            // Pitufos / Vienas
+            { name: "Aceite", description: "", price: 1.70, price2: 2.70, category: "pitufos" },
+            { name: "Aceite Tomate", description: "", price: 1.80, price2: 2.80, category: "pitufos" },
+            { name: "Mantequilla", description: "", price: 1.70, price2: 2.70, category: "pitufos" },
+            { name: "Mantequilla y mermelada", description: "", price: 1.70, price2: 2.70, category: "pitufos" },
+            { name: "Zurrapa", description: "", price: 2.10, price2: 3.10, category: "pitufos" },
+            { name: "Pate", description: "", price: 2.10, price2: 3.10, category: "pitufos" },
+            { name: "Sobrasada", description: "", price: 2.00, price2: 3.00, category: "pitufos" },
+            { name: "Lomo en manteca", description: "", price: 2.70, price2: 3.70, category: "pitufos" },
+            { name: "Pavo/Jamón cocido", description: "", price: 2.10, price2: 3.10, category: "pitufos" },
+            { name: "Serrano", description: "", price: 2.40, price2: 3.40, category: "pitufos" },
+            { name: "Manchego", description: "", price: 2.40, price2: 3.40, category: "pitufos" },
+            { name: "Atún con tomate", description: "", price: 2.50, price2: 3.50, category: "pitufos" },
+            { name: "Atún vegetal", description: "Atún, lechuga, tomate y mayonesa", price: 2.80, price2: 3.80, category: "pitufos" },
+            { name: "Bacon y queso", description: "Bacon, queso y mayonesa", price: 2.70, price2: 3.70, category: "pitufos" },
+            { name: "Mixto", description: "Jamón cocido, queso y mantequilla", price: 2.50, price2: 3.50, category: "pitufos" },
+            { name: "Mixto vegetal", description: "Jamón cocido, queso, lechuga, tomate y mayonesa", price: 2.80, price2: 3.80, category: "pitufos" },
+            { name: "Catalana", description: "Jamón serrano, tomate y aceite", price: 2.60, price2: 3.60, category: "pitufos" },
+            { name: "Catalana manchego", description: "Jamón serrano, manchego, tomate y aceite", price: 2.90, price2: 3.90, category: "pitufos" },
+            { name: "Tortilla francesa", description: "Tortilla francesa, lechuga, tomate y mayonesa", price: 2.80, price2: 3.80, category: "pitufos" },
+            { name: "Tortilla de patata", description: "Tortilla de patata con mayonesa o alioli", price: 3.00, price2: 4.00, category: "pitufos" },
+            { name: "Mixto manchego", description: "Jamón cocido, queso manchego y mantequilla", price: 2.70, price2: 3.70, category: "pitufos" },
+            { name: "Bacon completo", description: "Bacon, queso, lechuga, tomate y mayonesa", price: 3.20, price2: 4.20, category: "pitufos" },
+            { name: "Montadito completo", description: "Lomo adobado, lechuga, tomate y mayonesa", price: 3.20, price2: 4.20, category: "pitufos" },
+            { name: "Nam-Nam", description: "Pollo aliñado, queso, bacon, lechuga y alioli", price: 3.80, price2: 4.80, category: "pitufos" },
+            { name: "Simba", description: "Lomo adobado, huevo, pimiento y alioli", price: 3.80, price2: 4.80, category: "pitufos" },
+            { name: "Caprino", description: "Queso de cabra, cebolla caramelizada, bacon y mayonesa", price: 3.80, price2: 4.80, category: "pitufos" },
+            { name: "Italiano", description: "Queso blanco, tomate rodaja, aceite y orégano", price: 2.70, price2: 3.70, category: "pitufos" },
+            { name: "Pollo completo", description: "Pollo, queso, lechuga, tomate y mayonesa", price: 3.60, price2: 4.60, category: "pitufos" },
+            { name: "Pollo especial", description: "Pollo aliñado, jamón cocido, queso, huevo y alioli", price: 3.90, price2: 4.90, category: "pitufos" },
+            { name: "Inmortal", description: "Lomo adobado, bacon, francesa, queso y alioli", price: 3.80, price2: 4.80, category: "pitufos" },
+            { name: "Candas", description: "Cerdo aliñado, bacon, huevo, cebolla y mayonesa", price: 3.90, price2: 4.90, category: "pitufos" },
+            { name: "El Cerdito Deluxe", description: "Cerdo aliñado, bacon, huevo, queso, cebolla caramelizada, lechuga, tomate y alioli", price: 4.00, price2: 5.00, category: "pitufos" },
+            { name: "Mucha-mecha", description: "Pulled pork (carne mechada), tortilla de patata y alioli", price: 4.30, price2: 5.30, category: "pitufos" },
+            // Tapas
+            { name: "Pincho Tortilla", description: "", price: 2.00, category: "tapas" },
+            { name: "Ensaladilla Rusa", description: "", price: 2.00, category: "tapas" },
+            { name: "Croquetas de Rabo de Toro", description: "", price: 2.70, category: "tapas" },
+            { name: "Croquetas de Cocido", description: "", price: 2.50, category: "tapas" },
+            { name: "Croqueta Gamba Ajillo", description: "", price: 2.70, category: "tapas" },
+            { name: "Choripan con Chimichurri", description: "", price: 2.50, category: "tapas" },
+            { name: "Gambas al Pil-Pil", description: "", price: 3.00, category: "tapas" },
+            { name: "Albóndigas con Tomate", description: "", price: 2.50, category: "tapas" },
+            { name: "Pinchito de Pollo", description: "", price: 2.50, category: "tapas" },
+            { name: "Donut Crujiente Pollo", description: "", price: 2.50, category: "tapas" },
+            // Entrantes
+            { name: "Patatas Fritas", description: "", price: 3.00, price2: 5.00, category: "entrantes" },
+            { name: "Patatas con Alioli", description: "", price: 3.50, price2: 6.00, category: "entrantes" },
+            { name: "Patatas Bravas", description: "", price: 4.00, price2: 7.00, category: "entrantes" },
+            { name: "Nuguets de Pollo", description: "", price: 4.50, price2: 6.50, category: "entrantes" },
+            { name: "Alitas de Pollo", description: "", price: 5.00, price2: 8.50, category: "entrantes" },
+            { name: "Patatas Pull Pork", description: "", price: 8.00, category: "entrantes" },
+            { name: "Cheddar Bites Jalapeños", description: "", price: 4.00, category: "entrantes" },
+            { name: "Lagrimitas Pollo", description: "", price: 4.50, category: "entrantes" },
+            { name: "Aros de Cebolla", description: "", price: 3.00, category: "entrantes" },
+            // Ensaladas
+            { name: "Mixta", description: "Lechuga, tomate, cebolla, atún, maíz y bocas de mar", price: 6.90, category: "ensaladas" },
+            { name: "Cesar", description: "Lechuga, pollo a la plancha, pan frito, queso parmesano y salsa cesar", price: 8.50, category: "ensaladas" },
+            { name: "Cabrina", description: "Lechuga, queso de cabra, pollo rebozado, bacon, nueces y salsa miel mostaza", price: 8.80, category: "ensaladas" },
+            { name: "Marinera", description: "Lechuga, tomate, cebolla, atún, bocas de mar y salmón", price: 8.80, category: "ensaladas" },
+            // Burguers
+            { name: "Hamburguesa Sola", description: "Pan brioche, burguer ternera, mayonesa y ketchup", price: 4.00, category: "burguers" },
+            { name: "Bacon & Queso", description: "Pan brioche, burguer ternera, queso cheddar, bacon, mayonesa y ketchup", price: 4.90, category: "burguers" },
+            { name: "Completa", description: "Pan brioche, burguer ternera, queso cheddar, lechuga, tomate, cebolla, ketchup y mayonesa", price: 4.90, category: "burguers" },
+            { name: "De Buey", description: "Pan brioche, burguer de buey 200grs, queso cheddar, lechuga, tomate, cebolla, ketchup y mayonesa", price: 7.50, category: "burguers" },
+            { name: "Fachera", description: "Pan brioche, burguer pollo crujiente, bacon, lechuga, tomate y mayonesa", price: 7.50, category: "burguers" },
+            { name: "Doble Crush", description: "Pan brioche, doble burguer ternera, doble de queso cheddar, bacon, huevo, cebolla crispy y salsa american burguer", price: 7.80, category: "burguers" },
+            { name: "Re Piola", description: "Pan brioche, burguer de buey 200grs, queso de cabra, cebolla caramelizada, bacon y mermelada de fresa", price: 9.30, category: "burguers" },
+            { name: "Suprema", description: "Pan brioche, burguer de buey 200grs, queso cheddar, bacon, huevo, jamón cocido, cebolla caramelizada y salsa barbacoa", price: 10.00, category: "burguers" },
+            { name: "Texana", description: "Pan brioche, burguer de buey 200grs, doble queso cheddar, aros de cebolla, bacon y salsa american burguer", price: 11.00, category: "burguers" },
+            { name: "Pulled Pork", description: "Pan brioche, burguer de buey 200grs, doble queso cheddar, bacon, pulled pork, cebolla caramelizada y salsa alioli", price: 12.50, category: "burguers" },
+            // Montados
+            { name: "Lomi", description: "Cinta de lomo y alioli", price: 2.20, category: "montados" },
+            { name: "Pikolino", description: "Lomo adobado, tomate y mayonesa", price: 2.00, category: "montados" },
+            { name: "Bacon", description: "Bacon y queso", price: 2.00, category: "montados" },
+            { name: "Piolita", description: "Bacon, queso, pollo y mayonesa", price: 2.30, category: "montados" },
+            { name: "Simba", description: "Lomo adobado, huevo, pimiento y alioli", price: 2.50, category: "montados" },
+            { name: "Puky", description: "Lomo adobado, huevo, bacon, queso y alioli", price: 2.50, category: "montados" },
+            { name: "Gody", description: "Lomo de cerdo, queso manchego, pimiento y alioli", price: 2.50, category: "montados" },
+            // Camperos
+            { name: "Sencillo", description: "Jamon cocido, queso edam, lechuga, tomate y mayonesa", price: 4.00, category: "camperos" },
+            { name: "Montadito", description: "Lomo adobado, queso edam, lechuga, tomate y mayonesa", price: 4.50, category: "camperos" },
+            { name: "Bacon", description: "Bacon, queso edam, lechuga, tomate y mayonesa", price: 4.50, category: "camperos" },
+            { name: "Atún", description: "Atún, lechuga, tomate y mayonesa", price: 5.00, category: "camperos" },
+            { name: "Pollo", description: "Pollo plancha, jamón cocido, queso edam, lechuga, tomate y mayonesa", price: 5.50, category: "camperos" },
+            { name: "Vegetariano", description: "Tortilla francesa, pimiento, cebolla, lechuga, tomate y mayonesa", price: 5.00, category: "camperos" },
+            { name: "Bacon Especial", description: "Bacon, huevo, cebolla caramelizada, lechuga, tomate y mayonesa", price: 5.30, category: "camperos" },
+            { name: "Copado", description: "Tortilla frances, bacon, queso edam, lechuga, tomate y mayonesa", price: 5.50, category: "camperos" },
+            { name: "Serranito", description: "Pollo/cerdo, jamón serrano, tomate, pimientos y mayonesa", price: 5.70, category: "camperos" },
+            { name: "Tiki", description: "Tortilla francesa, lomo adobado, bacon, queso Edam, lechuga, tomate y alioli", price: 5.80, category: "camperos" },
+            { name: "Molon", description: "Lomo adobado, bacon, queso manchego, queso edam, lechuga, tomate y alioli", price: 5.80, category: "camperos" },
+            { name: "Messi", description: "Pollo empanado, jamón cocido, queso edam, huevo, tomate y mayonesa", price: 6.00, category: "camperos" },
+            { name: "Macanudo", description: "Lomo de cerdo aliñado, queso edam, bacon, huevo, lechuga, tomate y mayonesa", price: 6.10, category: "camperos" },
+            { name: "Canchero", description: "Pollo, bacon, jamón cocido, queso edam, huevo, lechuga, tomate y mayonesa", price: 6.10, category: "camperos" },
+            { name: "Capitano", description: "Pollo, doble de bacon, doble queso edam, lomo adobado, huevo, cebolla caramelizada y alioli", price: 6.90, category: "camperos" },
+            { name: "Mucha-mecha", description: "Carne deshilachada (pulled pork) doble burguer ternera, bacon, cebolla caramelizada, queso edam, y alioli", price: 8.50, category: "camperos" }
+        ];
+
+        // Function to render menu items into their respective sections
+        function renderMenu() {
+            const categories = [
+                'tostas', 'croissant', 'pitufos', 'tapas', 'entrantes', 'ensaladas', 'burguers', 'montados', 'camperos'
+            ];
+
+            categories.forEach(category => {
+                const container = document.getElementById(`${category}-items`);
+                if (container) {
+                    container.innerHTML = ''; // Clear container
+                    const filteredItems = menuItems.filter(item => item.category === category);
+                    
+                    filteredItems.forEach(item => {
+                        let priceDisplay = `${item.price.toFixed(2)}€`;
+                        if (item.price2) {
+                            priceDisplay = `${item.price.toFixed(2)}€ / ${item.price2.toFixed(2)}€`;
+                        }
+                        
+                        const itemHTML = `
+                            <div class="bg-white p-6 rounded-2xl shadow-md border border-stone-200" itemprop="item" itemscope itemtype="https://schema.org/MenuItem">
+                                <h4 class="text-2xl font-handwritten font-semibold mb-2" itemprop="name">${item.name}</h4>
+                                <p class="text-stone-700 mb-2" itemprop="description">${item.description || ''}</p>
+                                <p class="text-lg font-bold text-orange-800" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                    <span itemprop="price">${priceDisplay.split('€')[0]}</span>€
+                                    <meta itemprop="priceCurrency" content="EUR" />
+                                </p>
+                            </div>
+                        `;
+                        container.innerHTML += itemHTML;
+                    });
+                }
+            });
+        }
+
+        // Function to handle the collapsible sections (toggle and icon rotation)
+        function setupCollapsibleSection(toggleId, contentId, iconId) {
+            const toggleButton = document.getElementById(toggleId);
+            const contentDiv = document.getElementById(contentId);
+            const icon = document.getElementById(iconId);
+            
+            if (!toggleButton || !contentDiv || !icon) return;
+
+            toggleButton.addEventListener('click', () => {
+                const isOpen = contentDiv.classList.contains('open');
+                if (isOpen) {
+                    contentDiv.classList.remove('open');
+                    icon.classList.remove('open');
+                } else {
+                    contentDiv.classList.add('open');
+                    icon.classList.add('open');
+                }
+            });
+        }
+        
+        // --- Reviews Logic with Firestore ---
+        const reviewForm = document.getElementById('review-form');
+        const reviewMessage = document.getElementById('review-message');
+        const reviewsContainer = document.getElementById('reviews-container');
+        const loadingSpinner = document.getElementById('loading-spinner');
+        
+        // Function to submit a new review to Firestore
+        async function submitReview(reviewText) {
+            if (!authReady || !userId) {
+                setMessage('Error: Autenticación no lista. Inténtalo de nuevo.', 'bg-red-200 text-red-800', reviewMessage);
+                return;
+            }
+            if (reviewText.trim() === '') {
+                setMessage('La reseña no puede estar vacía.', 'bg-red-200 text-red-800', reviewMessage);
+                return;
+            }
+
+            loadingSpinner.classList.remove('hidden');
+            reviewMessage.classList.add('hidden');
+
+            try {
+                // Use a public path for reviews so everyone can see them
+                const reviewsCollectionRef = collection(db, `artifacts/${appId}/public/data/reviews`);
+                await addDoc(reviewsCollectionRef, {
+                    text: reviewText,
+                    userId: userId,
+                    createdAt: Timestamp.now()
+                });
+                setMessage('¡Gracias por tu reseña! Se ha enviado con éxito.', 'bg-green-200 text-green-800', reviewMessage);
+                reviewForm.reset();
+            } catch (e) {
+                console.error("Error al añadir la reseña: ", e);
+                setMessage('Error al enviar la reseña. Inténtalo de nuevo.', 'bg-red-200 text-red-800', reviewMessage);
+            } finally {
+                loadingSpinner.classList.add('hidden');
+            }
+        }
+
+        // Function to load and display reviews in real-time
+        function loadReviews() {
+            if (!authReady) {
+                console.log('Autenticación no lista, no se pueden cargar las reseñas.');
+                return;
+            }
+
+            const reviewsCollectionRef = collection(db, `artifacts/${appId}/public/data/reviews`);
+            const q = query(reviewsCollectionRef);
+            
+            onSnapshot(q, (querySnapshot) => {
+                const reviews = [];
+                querySnapshot.forEach((doc) => {
+                    reviews.push({ id: doc.id, ...doc.data() });
+                });
+
+                // Sort reviews by creation date (newest first)
+                reviews.sort((a, b) => b.createdAt.seconds - a.createdAt.seconds);
+
+                renderReviews(reviews);
+            });
+        }
+
+        // Function to render reviews on the page
+        function renderReviews(reviews) {
+            reviewsContainer.innerHTML = '';
+            if (reviews.length === 0) {
+                reviewsContainer.innerHTML = '<p class="text-center text-stone-500">Aún no hay reseñas. ¡Sé el primero en dejar una!</p>';
+                return;
+            }
+            
+            reviews.forEach(review => {
+                const reviewDate = review.createdAt.toDate().toLocaleDateString('es-ES', {
+                    year: 'numeric', month: 'long', day: 'numeric'
+                });
+
+                const reviewElement = document.createElement('div');
+                reviewElement.className = 'bg-white p-8 rounded-2xl shadow-md border border-stone-200';
+                reviewElement.innerHTML = `
+                    <p class="text-lg italic mb-4 text-stone-900">"${review.text}"</p>
+                    <p class="font-semibold text-orange-800">— Anónimo (ID: ${review.userId})</p>
+                    <p class="text-sm text-stone-700 mt-1">Fecha: ${reviewDate}</p>
+                `;
+                reviewsContainer.appendChild(reviewElement);
+            });
+        }
+
+        // --- Reservations Logic with Firestore ---
+        const reservasForm = document.getElementById('reservas-form');
+        const reservationMessage = document.getElementById('reservation-message');
+        const reservationSpinner = document.getElementById('reservation-spinner');
+        
+        // Function to submit a new reservation to Firestore
+        async function submitReservation(formData) {
+            if (!authReady || !userId) {
+                setMessage('Error: Autenticación no lista. Inténtalo de nuevo.', 'bg-red-200 text-red-800', reservationMessage);
+                return;
+            }
+
+            reservationSpinner.classList.remove('hidden');
+            reservationMessage.classList.add('hidden');
+
+            try {
+                // Save reservation in a private collection for the user
+                const reservationsCollectionRef = collection(db, `artifacts/${appId}/users/${userId}/reservations`);
+                await addDoc(reservationsCollectionRef, {
+                    ...formData,
+                    userId: userId,
+                    createdAt: Timestamp.now()
+                });
+                setMessage('¡Reserva enviada con éxito! Te esperamos con los brazos abiertos.', 'bg-green-200 text-green-800', reservationMessage);
+                reservasForm.reset();
+            } catch (e) {
+                console.error("Error al enviar la reserva: ", e);
+                setMessage('Error al enviar la reserva. Inténtalo de nuevo.', 'bg-red-200 text-red-800', reservationMessage);
+            } finally {
+                reservationSpinner.classList.add('hidden');
+            }
+        }
+
+        // Helper function to show messages for both forms
+        function setMessage(message, className, element) {
+            element.textContent = message;
+            element.className = `mt-4 p-4 rounded-md text-center font-medium ${className}`;
+            element.classList.remove('hidden');
+            setTimeout(() => {
+                element.classList.add('hidden');
+            }, 5000);
+        }
+
+        // Manejar el envío del formulario de reserva
+        reservasForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = {
+                nombre: document.getElementById('nombre').value,
+                email: document.getElementById('email').value,
+                telefono: document.getElementById('telefono').value,
+                fecha: document.getElementById('fecha').value,
+                personas: parseInt(document.getElementById('personas').value, 10),
+            };
+            submitReservation(formData);
+        });
+
+        // Manejar el envío del formulario de reseña
+        reviewForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const reviewText = document.getElementById('review-text').value;
+            submitReview(reviewText);
+        });
+
+        // --- Other Logic ---
+        // JS for mobile dropdown menu
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const hamburgerIcon = document.getElementById('hamburger-icon');
+        const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');
+
+        mobileMenuButton.addEventListener('click', () => {
+            const expanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
+            mobileMenuButton.setAttribute('aria-expanded', !expanded);
+            mobileMenu.classList.toggle('hidden');
+            hamburgerIcon.classList.toggle('open');
+        });
+
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                hamburgerIcon.classList.remove('open');
+                mobileMenuButton.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // NEW: Event listener to fix navigation links
+        document.querySelectorAll('.nav-link-collapsible').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const targetId = e.target.getAttribute('href').substring(1);
+                const targetButton = document.getElementById(targetId);
+                
+                // Programmatically click the button to trigger the collapsible function
+                if (targetButton) {
+                    targetButton.click();
+                }
+            });
+        });
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            renderMenu();
+            // Setup collapsible sections
+            setupCollapsibleSection('desayunos-toggle', 'desayunos-content', 'desayunos-icon');
+            setupCollapsibleSection('almuerzo-cena-toggle', 'almuerzo-cena-content', 'almuerzo-cena-icon');
+            setupCollapsibleSection('quienes-somos-toggle', 'quienes-somos-content', 'quienes-somos-icon');
+            setupCollapsibleSection('testimonios-toggle', 'testimonios-content', 'testimonios-icon');
+            signIn();
+        });
+    </script>
+</body>
+</html>
